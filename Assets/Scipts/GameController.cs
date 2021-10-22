@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
         }
 
         Instance = this;
+        Debug.Log("GameController is awake!");
     }
 
     // Update is called once per frame
