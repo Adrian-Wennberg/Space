@@ -1,13 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Spacebar : MonoBehaviour
 {
+    public static Spacebar Instance;
+
+    public Action OnSpacebar;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -15,7 +24,8 @@ public class Spacebar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Space!");
+            OnSpacebar?.Invoke();
         }
     }
+    
 }
