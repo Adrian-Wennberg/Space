@@ -8,7 +8,7 @@ public class SceneController : MonoBehaviour
 
     public List<string> sceneSteps;
     public List<int> stepTimes;
-    public SceneController Instance { get; private set; }
+    public static SceneController Instance { get; private set; }
 
     public string nextScene;
     public Action<string> onStep;
