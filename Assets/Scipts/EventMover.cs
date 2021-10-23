@@ -23,7 +23,7 @@ public class EventMover : EventTrigger
         Vector3 moveDir = pos - mover.transform.position;
         var currTime = 0f;
 
-        while (currTime <= time)
+        while (currTime < time)
         {
             mover.transform.Translate(moveDir * Time.deltaTime / time, Space.World);
             currTime += Time.deltaTime;

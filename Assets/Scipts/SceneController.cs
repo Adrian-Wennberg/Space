@@ -37,7 +37,7 @@ public class SceneController : MonoBehaviour
     }
 
     public IEnumerator PlayScene()
-    {
+    {   
         while (currentStep < sceneSteps.Count)
         {
             onStep?.Invoke(sceneSteps[currentStep]);

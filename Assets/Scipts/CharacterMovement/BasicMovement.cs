@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BasicMovement : MonoBehaviour
+public class BasicMovement : EventMover
 {
     public CharacterController controller;
+    public List<Transform> playerPositions;
     private float speed = 1.8f;
     private Animator anim;
 
@@ -12,12 +14,16 @@ public class BasicMovement : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        StartCoroutine(BasicMove());
+        //StartCoroutine(BasicMove());
+        SceneController.Instance.onStep += onStep;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void onStep(string _)
     {
+        var step = SceneController.Instance.CurrentStep;
+        var time = SceneController.Instance.stepTimes[step];
+        anim.SetBool("Walking", (transform.position - playerPositions[step].position).sqrMagnitude > 1f);
+        MoveTo(playerPositions[step], time);
     }
 
 

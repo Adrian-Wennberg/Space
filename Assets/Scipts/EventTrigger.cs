@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class EventTrigger : MonoBehaviour
 {
     public string triggerString;
+    public string consTriggerString;
     private bool running;
     public bool Triggered { get; protected set; }
 
@@ -25,9 +26,12 @@ public abstract class EventTrigger : MonoBehaviour
         else if (running)
         {
             Spacebar.Instance.OnSpacebar -= OnSpacebar;
-            OnCons();
+            if(string.IsNullOrEmpty(consTriggerString))
+                OnCons();
             running = false;
         }
+        if (stepName == consTriggerString)
+            OnCons();
     }
 
     protected virtual void OnSpacebar()
