@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public float speed = 1f;
+    private float speed = 1.8f;
     private Animator anim;
 
     // Start is called before the first frame update
@@ -23,15 +23,49 @@ public class BasicMovement : MonoBehaviour
 
     public IEnumerator BasicMove()
     {
-        var t = 0f;
+        float smooth = 5.0f;
+
+        var startTimer = 0f;
         anim.SetBool("Walking", true);
-        while (t < 5.3)
+        while (startTimer < 4.2)
         {
-            transform.Translate(0, 0, speed * Time.deltaTime);
+            transform.Translate(Vector3.forward *speed * Time.deltaTime);
 
             yield return null;
-            t += Time.deltaTime;
+            startTimer += Time.deltaTime;
         }
         anim.SetBool("Walking", false);
+
+        Vector3 rotationLeft = new Vector3(0, -15, 0);
+        Vector3 rotationRight = new Vector3(0, 15, 0);
+        transform.Rotate(rotationLeft);
+        transform.Rotate(rotationLeft);
+        transform.Rotate(rotationLeft);
+        transform.Rotate(rotationLeft);
+        transform.Rotate(rotationLeft);
+        transform.Rotate(rotationLeft);
+
+        yield return new WaitForSeconds(5);
+
+        transform.Rotate(rotationRight);
+        transform.Rotate(rotationRight);
+        transform.Rotate(rotationRight);
+        transform.Rotate(rotationRight);
+        transform.Rotate(rotationRight);
+        transform.Rotate(rotationRight);
+
+
+        var walkOutTimer = 0f;
+        anim.SetBool("Walking", true);
+        while (walkOutTimer < 4)
+        {
+            transform.Translate(Vector3.forward * 5.5f * Time.deltaTime);
+
+            yield return null;
+            walkOutTimer += Time.deltaTime;
+        }
+        anim.SetBool("Walking", false);
+
+
     }
 }
