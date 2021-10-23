@@ -15,6 +15,7 @@ public class SpaceListener : MonoBehaviour
     {
         GameController.Instance.State = GameController.GameState.Playing;
         GameController.Instance.StartScene("StartingScene");
+        Spacebar.Instance.OnSpacebar -= OnSpacebar;
     }
 
     // Update is called once per frame

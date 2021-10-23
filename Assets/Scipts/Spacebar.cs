@@ -14,10 +14,12 @@ public class Spacebar : MonoBehaviour
         if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
 
         Instance = this;
     }
+    
 
     // Update is called once per frame
     void Update()

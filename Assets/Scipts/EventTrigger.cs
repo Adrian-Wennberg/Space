@@ -5,15 +5,18 @@ using UnityEngine;
 public abstract class EventTrigger : MonoBehaviour
 {
     public string triggerString;
-    private bool running = false;
+    private bool running;
+    public bool Triggered { get; protected set; }
 
-    void Start()
+    protected void Start()
     {
         SceneController.Instance.onStep += onStep;
+        Triggered = false;
     }
 
     private void onStep(string stepName)
     {
+        Debug.Log("On Step Trigger: " + stepName);
         if (stepName == triggerString)
         {
             Spacebar.Instance.OnSpacebar += OnSpacebar;
@@ -22,9 +25,16 @@ public abstract class EventTrigger : MonoBehaviour
         else if (running)
         {
             Spacebar.Instance.OnSpacebar -= OnSpacebar;
+            OnCons();
             running = false;
         }
     }
 
-    protected abstract void OnSpacebar();
+    protected virtual void OnSpacebar()
+    {
+        Triggered = true;
+        Debug.Log("On Space Trigger: " + triggerString);
+    }
+
+    protected virtual void OnCons(){}
 }

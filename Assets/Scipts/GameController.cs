@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
         if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
 
         Instance = this;
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour
 
     public void StartScene(string scene)
     {
+        //Spacebar.Instance.OnSpacebar = null;
         Debug.Log("Starting Scene: " + scene);
         SceneManager.LoadScene(scene);
     }

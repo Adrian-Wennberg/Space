@@ -9,7 +9,9 @@ public class SceneController : MonoBehaviour
     public List<string> sceneSteps;
     public List<int> stepTimes;
     public static SceneController Instance { get; private set; }
+    public int CurrentStep => currentStep;
 
+    private int currentStep = 0;
     public string nextScene;
     public Action<string> onStep;
 
@@ -18,6 +20,7 @@ public class SceneController : MonoBehaviour
         if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
         Instance = this;
     }
@@ -35,7 +38,6 @@ public class SceneController : MonoBehaviour
 
     public IEnumerator PlayScene()
     {
-        int currentStep = 0;
         while (currentStep < sceneSteps.Count)
         {
             onStep?.Invoke(sceneSteps[currentStep]);
