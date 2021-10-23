@@ -48,4 +48,9 @@ public class SceneController : MonoBehaviour
 
         GameController.Instance.StartScene(nextScene);
     }
+
+    public void SkipToStep(int step)
+    {
+        currentStep = step;
+    }
 }
