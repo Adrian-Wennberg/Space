@@ -6,6 +6,7 @@ public class Zombie : EventMover
 {
     public Transform endPos;
     private Animator anim;
+    public AudioSource zombieScream;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Zombie : EventMover
     {
         Debug.Log("test");
         StartCoroutine(ZombieWalking());
+        zombieScream.Play();
     }
 
     private IEnumerator ZombieWalking()
@@ -26,6 +28,5 @@ public class Zombie : EventMover
         float time = 1.2f;
         anim.SetBool("Walking", true);
         yield return MoveTo(endPos.position,time);
-       // anim.SetBool("Walking", false);
     }
 }

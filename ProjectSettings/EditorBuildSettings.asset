@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/WalkingScene1.unity
     guid: 2c4f99bf90267374a9862882edbb543c
   - enabled: 1
+    path: Assets/Scenes/SceneThree.unity
+    guid: 59bc2f345de68784691373ecd69c9757
+  - enabled: 1
     path: Assets/Scenes/SceneTwo.unity
     guid: abc1bc2de40ba3040a25b7c87b74811e
   - enabled: 1
