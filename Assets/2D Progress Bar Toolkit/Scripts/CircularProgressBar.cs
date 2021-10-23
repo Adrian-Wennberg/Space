@@ -20,6 +20,7 @@ public class CircularProgressBar : MonoBehaviour {
 	private List<Image> m_ProgressToFill = new List<Image> ();
 	private float m_SizeOfSegment;
 	private bool increaseProgress = true;
+	public bool active = false;
 
 	private void Awake() {
 		// Get images in Children
@@ -56,24 +57,27 @@ public class CircularProgressBar : MonoBehaviour {
 			m_ProgressToFill[i].fillAmount = (m_FillAmount * ((m_EndAngle-m_StartAngle)/360)) - m_SizeOfSegment * i;
 		}
 
-		
-		if (increaseProgress)
+        if (active)
         {
-			m_FillAmount += Time.deltaTime / 2;
-			if (m_FillAmount > 1.0f)
-            {
-				increaseProgress = false;
-            }
-		}
-		else if (!increaseProgress)
-        {
-			m_FillAmount -= Time.deltaTime / 2;
-			if (m_FillAmount < 0.0f)
+			if (increaseProgress)
 			{
-				increaseProgress = true;
+				m_FillAmount += Time.deltaTime / 2;
+				if (m_FillAmount > 1.0f)
+				{
+					increaseProgress = false;
+				}
+			}
+			else if (!increaseProgress)
+			{
+				m_FillAmount -= Time.deltaTime / 2;
+				if (m_FillAmount < 0.0f)
+				{
+					increaseProgress = true;
 
+				}
 			}
 		}
+		
 	}
 
 	private float NormalizeAngle(float angle) {
