@@ -607,6 +607,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &745702140 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 920976331000805121, guid: 1501bb24247377e438b9f48a1fce0c10,
+    type: 3}
+  m_PrefabInstance: {fileID: 5192795969134214548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &829031623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1509,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 920976331000805121, guid: 1501bb24247377e438b9f48a1fce0c10,
+        type: 3}
+      propertyPath: DopplerLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192795968515726479, guid: 1501bb24247377e438b9f48a1fce0c10,
+        type: 3}
+      propertyPath: footsteps
+      value: 
+      objectReference: {fileID: 745702140}
     - target: {fileID: 5192795968515726479, guid: 1501bb24247377e438b9f48a1fce0c10,
         type: 3}
       propertyPath: playerPositions.Array.data[1]

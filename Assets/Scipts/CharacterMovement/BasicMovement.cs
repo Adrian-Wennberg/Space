@@ -9,6 +9,7 @@ public class BasicMovement : EventMover
     public List<Transform> playerPositions;
     private float speed = 1.8f;
     private Animator anim;
+    public AudioSource footsteps;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,14 @@ public class BasicMovement : EventMover
     {
         var step = SceneController.Instance.CurrentStep;
         var time = SceneController.Instance.stepTimes[step];
+        if ((transform.position - playerPositions[step].position).sqrMagnitude > 1f)
+        {
+            footsteps.Play();
+        }
+        else
+        {
+            footsteps.Stop();
+        }
         anim.SetBool("Walking", (transform.position - playerPositions[step].position).sqrMagnitude > 1f);
         MoveTo(playerPositions[step], time);
     }
@@ -39,6 +48,7 @@ public class BasicMovement : EventMover
 
             yield return null;
             startTimer += Time.deltaTime;
+       
         }
         anim.SetBool("Walking", false);
 

@@ -7,6 +7,7 @@ public class CarCrash : EventMover
     public Transform carEndPos;
     public Transform carCrashPos;
     public GameObject explosion;
+    public AudioSource boom;
     
 
     protected override void OnCons()
@@ -28,6 +29,7 @@ public class CarCrash : EventMover
         Debug.Log("Explode!");
         GameObject exp = Instantiate(explosion, carCrashPos.position + Vector3.up * 3, Quaternion.LookRotation(Vector3.up, Vector3.forward));
         exp.transform.localScale = Vector3.one * 4;
+        boom.Play();
     }
     
 }
