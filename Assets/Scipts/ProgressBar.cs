@@ -33,6 +33,9 @@ public class ProgressBar : MonoBehaviour
             running = false;
             progressBar.gameObject.SetActive(false);
             Arrow.gameObject.SetActive(false);
+
+            // Update score here
+            ScoreController.Instance.UpdateScore();
         }
     }
     protected void OnSpacebar()

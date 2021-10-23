@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartingScene.unity
     guid: 2f87c69f611c25c42af14f692cab5f3c
   - enabled: 0
-    path: Assets/Scenes/StreetExample.unity
+    path: Assets/Scenes/old/StreetExample.unity
     guid: afb6e8c9ab5eaf943b29e34684b01a84
   - enabled: 1
     path: Assets/Scenes/WalkingScene1.unity
