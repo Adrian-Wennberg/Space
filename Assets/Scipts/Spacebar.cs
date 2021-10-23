@@ -19,15 +19,17 @@ public class Spacebar : MonoBehaviour
 
         Instance = this;
     }
-    
 
+    private bool lastTouch = false;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || (!lastTouch && Input.touchCount == 1))
         {
             OnSpacebar?.Invoke();
         }
+
+        lastTouch = Input.touchCount == 1;
     }
     
 }
