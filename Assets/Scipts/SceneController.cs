@@ -7,7 +7,7 @@ public class SceneController : MonoBehaviour
 {
 
     public List<string> sceneSteps;
-    public List<int> stepTimes;
+    public List<float> stepTimes;
     public static SceneController Instance { get; private set; }
     public int CurrentStep => currentStep;
 
